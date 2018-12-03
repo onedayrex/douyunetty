@@ -17,9 +17,15 @@ public class DouyuHandle extends ChannelInboundHandlerAdapter {
 
     public static final String CHAT_FLAG = "chatmsg";
 
+    public final String roomId;
+
+    public DouyuHandle(String roomId) {
+        this.roomId = roomId;
+    }
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        String loginCMD = "type@=loginreq/roomid@=485503/";
+        String loginCMD = "type@=loginreq/roomid@=" + roomId + "/";
         ctx.writeAndFlush(MessageUtils.getSendBuf(loginCMD));
     }
 

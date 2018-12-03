@@ -19,7 +19,11 @@ import java.util.concurrent.TimeUnit;
 public class DouyuNettyClient {
     private static final String host = "openbarrage.douyutv.com";
     private static final int port = 8601;
+    private final String roomId;
 
+    public DouyuNettyClient(String roomId) {
+        this.roomId = roomId;
+    }
 
     public void start() {
         EventLoopGroup group = new NioEventLoopGroup();
@@ -34,7 +38,7 @@ public class DouyuNettyClient {
                             ch.pipeline().addLast(new DouyuByteToMessageDecode());
                             ch.pipeline().addLast(new StringDecoder());
                             ch.pipeline().addLast(new DouyuMessageToMessageDecode());
-                            ch.pipeline().addLast(new DouyuHandle());
+                            ch.pipeline().addLast(new DouyuHandle(roomId));
                         }
                     });
             ChannelFuture f = b.connect(host, port).sync();
@@ -47,7 +51,7 @@ public class DouyuNettyClient {
     }
 
     public static void main(String[] args) {
-        DouyuNettyClient douyuNettyClient = new DouyuNettyClient();
+        DouyuNettyClient douyuNettyClient = new DouyuNettyClient("229346");
         douyuNettyClient.start();
     }
 }
