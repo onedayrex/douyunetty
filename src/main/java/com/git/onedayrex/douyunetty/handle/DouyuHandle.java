@@ -37,15 +37,15 @@ public class DouyuHandle extends ChannelInboundHandlerAdapter {
             if (LOGIN_FLAG.equals(type)) {
                 String joinGroupCMD =  "type@=joingroup/rid@=9999/gid@=-9999/";
                 ctx.writeAndFlush(MessageUtils.getSendBuf(joinGroupCMD));
-                log.info("==>登录成功，加入弹幕群组");
+                log.info("→登录成功，加入弹幕群组");
                 return;
             } else if (JOIN_FLAG.equals(type)) {
-                log.info("==>加入弹幕群组成功");
+                log.info("→加入弹幕群组成功");
             }else if(CHAT_FLAG.equals(type)){
                 String userName = result.get("nn");
                 String level = result.get("level");
                 String txt = result.get("txt");
-                log.info(userName + "(" + level + ")" + "==>" + txt);
+                log.info(userName + "(" + level + ")" + "→" + txt);
             }else {
                 String userName = result.get("nn");
 //                log.info(userName + ",消息类型==>" + type);

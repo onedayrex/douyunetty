@@ -51,7 +51,7 @@ public class DouyuNettyClient {
     }
 
     public static void main(String[] args) {
-        DouyuNettyClient douyuNettyClient = new DouyuNettyClient("229346");
+        DouyuNettyClient douyuNettyClient = new DouyuNettyClient("1126960");
         douyuNettyClient.start();
     }
 }

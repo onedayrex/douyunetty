@@ -14,6 +14,17 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    manifestContentCharset 'utf-8'
+    metadataCharset 'utf-8'
+    manifest {
+        attributes "Main-Class": "com.git.onedayrex.client.DouyuNettyClient"
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 dependencies {
     // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.1'
