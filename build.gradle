@@ -13,12 +13,15 @@ repositories {
     }
     mavenCentral()
 }
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 
 jar {
     manifestContentCharset 'utf-8'
     metadataCharset 'utf-8'
     manifest {
-        attributes "Main-Class": "com.git.onedayrex.client.DouyuNettyClient"
+        attributes "Main-Class": "com.git.onedayrex.douyunetty.client.DouyuNettyClient"
     }
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }

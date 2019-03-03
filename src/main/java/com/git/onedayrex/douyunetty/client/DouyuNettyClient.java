@@ -14,6 +14,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.timeout.IdleStateHandler;
 
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class DouyuNettyClient {
@@ -51,7 +52,9 @@ public class DouyuNettyClient {
     }
 
     public static void main(String[] args) {
-        DouyuNettyClient douyuNettyClient = new DouyuNettyClient("1126960");
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        DouyuNettyClient douyuNettyClient = new DouyuNettyClient(s);
         douyuNettyClient.start();
     }
 }
